@@ -58,6 +58,13 @@ class Sim(Generic):
                         '-LDFLAGS "-Wl,-rpath,`cocotb-config --lib-dir` -L`cocotb-config --lib-dir` -lcocotbvpi_verilator"',
                     ],
                 ),
+                "xcelium": (
+                    "xmsim_options",
+                    [
+                        "-pli",
+                        "`cocotb-config --lib-name-path vpi xcelium`"
+                    ],
+                ),
             }
             (opt, val) = cocotb_options[tool]
             self.edam["tool_options"][tool][opt] = (
@@ -85,3 +92,4 @@ class Sim(Generic):
             else {}
         )
         self._run_tool(cmd, args=args, cwd=cwd, env=env)
+
